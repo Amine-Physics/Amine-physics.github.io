@@ -1,0 +1,175 @@
+
+:root {
+  --ink: #1a1208;
+  --ink-light: #3d2e1a;
+  --parchment: #f7f3ea;
+  --parchment-dark: #ede7d6;
+  --accent: #8b2a0f;
+  --gold: #b8860b;
+  --rule: #c8b89a;
+  --sidebar-w: 280px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'EB Garamond', serif;
+  line-height: 1.75;
+  font-size: 18px;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--ink);
+  color: var(--parchment);
+  padding: 2rem 0;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 0 2rem 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-name {
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.sidebar-subtitle {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.sidebar-nav {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.7rem 2rem;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+.main {
+  margin-left: var(--sidebar-w);
+}
+
+.page-header {
+  background: var(--ink);
+  color: var(--parchment);
+  padding: 4rem 5rem;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.page-header p {
+  max-width: 700px;
+  opacity: 0.8;
+  margin-top: 1rem;
+}
+
+.content {
+  max-width: 900px;
+  padding: 4rem 5rem;
+}
+
+.section {
+  margin-bottom: 5rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section-rule {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.note-card {
+  background: rgba(0,0,0,0.02);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.note-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.note-meta {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.button-link {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.button-link:hover {
+  background: var(--accent);
+  color: white;
+}
+
+iframe {
+  border: none;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .content,
+  .page-header {
+    padding: 2rem;
+  }
+}
