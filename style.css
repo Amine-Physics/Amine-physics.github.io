@@ -1,3 +1,9 @@
+/* ════════════════════════════════════════════
+   amine-physics.github.io — style.css
+   Drop-in replacement. No HTML changes needed.
+   ════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=JetBrains+Mono:wght@300;400&display=swap');
 
 :root {
   --ink: #1a1208;
@@ -5,8 +11,11 @@
   --parchment: #f7f3ea;
   --parchment-dark: #ede7d6;
   --accent: #8b2a0f;
+  --accent-light: #c44a1f;
   --gold: #b8860b;
+  --gold-light: #d4a843;
   --rule: #c8b89a;
+  --margin: #6b5a3e;
   --sidebar-w: 280px;
 }
 
@@ -23,11 +32,27 @@ html {
 body {
   background: var(--parchment);
   color: var(--ink);
-  font-family: 'EB Garamond', serif;
+  font-family: 'EB Garamond', Georgia, serif;
   line-height: 1.75;
   font-size: 18px;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 20% 0%,  rgba(184,134,11,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(139,42,15,0.05)  0%, transparent 60%);
 }
 
+/* subtle grain */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.35;
+}
+
+/* ── SIDEBAR ─────────────────────────────── */
 .sidebar {
   position: fixed;
   left: 0;
@@ -36,119 +61,244 @@ body {
   height: 100vh;
   background: var(--ink);
   color: var(--parchment);
-  padding: 2rem 0;
+  padding: 2.5rem 0;
   overflow-y: auto;
+  border-right: 1px solid rgba(184,134,11,0.25);
+  /* gold shimmer on right edge */
+  box-shadow: inset -1px 0 0 0 rgba(184,134,11,0.0),
+              1px 0 12px rgba(0,0,0,0.25);
+}
+
+.sidebar::after {
+  content: '';
+  position: absolute;
+  top: 0; right: -1px;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(184,134,11,0.5) 40%,
+    rgba(184,134,11,0.5) 60%,
+    transparent 100%);
+  pointer-events: none;
 }
 
 .sidebar-header {
   padding: 0 2rem 2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(200,184,154,0.15);
+  margin-bottom: 0.5rem;
 }
 
 .sidebar-name {
-  font-size: 1.2rem;
-  letter-spacing: 0.12em;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-light);
+  display: block;
+  text-decoration: none;
+  transition: color 0.2s;
+  margin-bottom: 0.4rem;
+}
+
+.sidebar-name:hover {
+  color: var(--parchment);
 }
 
 .sidebar-subtitle {
-  font-size: 0.8rem;
-  opacity: 0.7;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  opacity: 0.45;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  color: var(--parchment);
 }
 
 .sidebar-nav {
   list-style: none;
-  margin-top: 2rem;
+  margin-top: 1.25rem;
+}
+
+/* Section label inside nav — add these spans in your HTML if you want them,
+   but they are optional; plain links still look great */
+.nav-section-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 1rem 2rem 0.35rem;
+  opacity: 0.75;
+  display: block;
 }
 
 .nav-link {
   display: block;
-  padding: 0.7rem 2rem;
-  color: rgba(255,255,255,0.7);
+  padding: 0.5rem 2rem 0.5rem 2.5rem;
+  color: rgba(247,243,234,0.62);
   text-decoration: none;
-  transition: 0.2s;
+  font-family: 'EB Garamond', serif;
+  font-size: 0.92rem;
+  font-style: italic;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
 }
 
-.nav-link:hover {
-  background: rgba(255,255,255,0.05);
-  color: white;
+.nav-link:hover,
+.nav-link.active {
+  color: var(--parchment);
+  border-left-color: var(--gold);
+  background: rgba(184,134,11,0.08);
+  padding-left: 2.8rem;
 }
 
+/* ── MAIN ────────────────────────────────── */
 .main {
   margin-left: var(--sidebar-w);
+  min-height: 100vh;
 }
 
+/* ── PAGE HEADER ─────────────────────────── */
 .page-header {
   background: var(--ink);
   color: var(--parchment);
-  padding: 4rem 5rem;
+  padding: 4rem 5rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative large character — harmless if no element uses it */
+.page-header::before {
+  content: attr(data-char);
+  position: absolute;
+  right: 3rem;
+  top: -1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13rem;
+  color: rgba(184,134,11,0.055);
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
 }
 
 .page-header h1 {
+  font-family: 'Cormorant Garamond', serif;
   font-size: 3rem;
   font-weight: 300;
+  line-height: 1.15;
+  color: var(--parchment);
+  margin-bottom: 0.75rem;
+}
+
+/* gold rule under heading — add <div class="header-rule"></div>
+   after your h1 in HTML, or it simply won't show */
+.header-rule {
+  width: 55px;
+  height: 1px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  margin: 1.25rem 0;
 }
 
 .page-header p {
-  max-width: 700px;
-  opacity: 0.8;
+  max-width: 620px;
+  opacity: 0.58;
   margin-top: 1rem;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.75;
 }
 
+/* ── CONTENT ─────────────────────────────── */
 .content {
   max-width: 900px;
   padding: 4rem 5rem;
 }
 
+/* ── SECTIONS ────────────────────────────── */
 .section {
   margin-bottom: 5rem;
+  animation: fadeUp 0.55s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .section-title {
+  font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
 }
 
 .section-rule {
-  width: 60px;
+  width: 40px;
   height: 2px;
   background: var(--gold);
   margin-bottom: 2rem;
+  margin-top: 0.75rem;
 }
 
+/* ── NOTE CARDS ──────────────────────────── */
 .note-card {
-  background: rgba(0,0,0,0.02);
+  background: rgba(139,42,15,0.03);
   border-left: 3px solid var(--accent);
-  padding: 1.5rem;
+  padding: 1.5rem 1.75rem;
   margin-bottom: 2rem;
+  border-radius: 0 4px 4px 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.note-card:hover {
+  background: rgba(139,42,15,0.055);
+  border-left-color: var(--accent-light);
 }
 
 .note-title {
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem;
-  margin-bottom: 0.5rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
 }
 
 .note-meta {
-  font-size: 0.85rem;
-  color: #666;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--margin);
   margin-bottom: 1rem;
+  opacity: 0.75;
 }
 
+/* ── BUTTON LINKS ────────────────────────── */
 .button-link {
   display: inline-block;
-  padding: 0.6rem 1rem;
+  padding: 0.55rem 1.1rem;
   border: 1px solid var(--accent);
   color: var(--accent);
   text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   margin-top: 1rem;
+  border-radius: 2px;
+  transition: all 0.2s ease;
 }
 
 .button-link:hover {
   background: var(--accent);
-  color: white;
+  color: var(--parchment);
+  box-shadow: 0 2px 12px rgba(139,42,15,0.2);
 }
 
+/* ── MISC ────────────────────────────────── */
 iframe {
   border: none;
 }
@@ -157,11 +307,77 @@ ul {
   padding-left: 1.5rem;
 }
 
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* ornamental divider — use:
+   <div class="ornamental-rule"><span>✦</span></div> */
+.ornamental-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0;
+  color: var(--rule);
+}
+.ornamental-rule::before,
+.ornamental-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.ornamental-rule span {
+  font-size: 0.9rem;
+  color: var(--gold);
+}
+
+/* theorem environments — optional, add when you write proofs */
+.theorem    { background: rgba(139,42,15,0.04);  border-left: 3px solid var(--accent);    padding: 1.5rem 1.75rem; border-radius: 0 4px 4px 0; margin: 2rem 0; }
+.lemma      { background: rgba(184,134,11,0.05); border-left: 3px solid var(--gold);      padding: 1.5rem 1.75rem; border-radius: 0 4px 4px 0; margin: 2rem 0; }
+.proof      { background: rgba(61,46,26,0.03);   border-left: 3px solid var(--rule);      padding: 1.5rem 1.75rem; border-radius: 0 4px 4px 0; margin: 2rem 0; }
+.remark     { background: rgba(107,90,62,0.05);  border-left: 3px solid var(--margin);    padding: 1.5rem 1.75rem; border-radius: 0 4px 4px 0; margin: 2rem 0; }
+.definition { background: rgba(26,18,8,0.04);    border-left: 3px solid var(--ink-light); padding: 1.5rem 1.75rem; border-radius: 0 4px 4px 0; margin: 2rem 0; }
+
+.thm-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.theorem    .thm-label { color: var(--accent); }
+.lemma      .thm-label { color: var(--gold); }
+.proof      .thm-label { color: var(--margin); }
+.remark     .thm-label { color: var(--margin); }
+.definition .thm-label { color: var(--ink-light); }
+
+.proof-end {
+  text-align: right;
+  color: var(--accent);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+/* ── MOBILE ──────────────────────────────── */
 @media (max-width: 900px) {
   .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
+    position: fixed;
+    width: var(--sidebar-w);
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 100;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
   }
 
   .main {
@@ -171,5 +387,13 @@ ul {
   .content,
   .page-header {
     padding: 2rem;
+  }
+
+  .page-header {
+    padding-top: 4rem;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
   }
 }
