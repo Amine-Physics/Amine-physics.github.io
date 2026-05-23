@@ -11,7 +11,18 @@
 
 </head>
 <body>
+<button 
+  onclick="document.querySelector('.sidebar').classList.toggle('open')"
+  style="display:none;position:fixed;top:1rem;left:1rem;z-index:200;
+         background:#1a1208;color:#d4a843;border:1px solid rgba(184,134,11,0.3);
+         padding:0.5rem 0.75rem;font-family:monospace;font-size:0.7rem;
+         cursor:pointer;border-radius:3px;"
+  id="menuBtn">☰ Menu</button>
 
+<script>
+  if (window.innerWidth <= 900)
+    document.getElementById('menuBtn').style.display = 'block';
+</script>
 
 <aside class="sidebar">
   <div class="sidebar-header">
