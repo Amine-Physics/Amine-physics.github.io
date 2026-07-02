@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering Projects</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<button 
+  onclick="document.querySelector('.sidebar').classList.toggle('open')"
+  style="display:none;position:fixed;top:1rem;left:1rem;z-index:200;
+         background:#1a1208;color:#d4a843;border:1px solid rgba(184,134,11,0.3);
+         padding:0.5rem 0.75rem;font-family:monospace;font-size:0.7rem;
+         cursor:pointer;border-radius:3px;"
+  id="menuBtn">☰ Menu</button>
+
+<script>
+  if (window.innerWidth <= 900)
+    document.getElementById('menuBtn').style.display = 'block';
+</script>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-name">Mohamed Amine Ezzine</div>
+    <div class="sidebar-subtitle">Mathematical Physics</div>
+  </div>
+
+  <ul class="sidebar-nav">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="math.html" class="nav-link">Mathematics Notes</a></li>
+    <li><a href="physics.html" class="nav-link">Physics Notes</a></li>
+    <li><a href="research.html" class="nav-link">Research</a></li>
+    <li><a href="thesis.html" class="nav-link">Master Thesis</a></li>
+    <li><a href="engineering.html" class="nav-link">Engineering Projects</a></li>
+    <li><a href="cv.html" class="nav-link">CV</a></li>
+  </ul>
+</aside>
+
+<main class="main">
+
+<header class="page-header">
+  <h1>Engineering Projects</h1>
+  <p>
+    Selected engineering projects involving modelling,
+    simulation, and applied physics.
+  </p>
+</header>
+
+<div class="content">
+
+<section class="section" id="thermal-transport">
+  <h2 class="section-title">Fluid Dynamics & Heat Transfer</h2>
+  <div class="section-rule"></div>
+
+  <div class="note-card">
+    <div class="note-title">Thermal Transport in Cylindrical Channels</div>
+    <div class="note-meta">Heat Transfer · Fluid Dynamics · 2026</div>
+
+    <p>
+      This project investigates thermal transport in cylindrical
+      channels under laminar flow conditions. The work combines
+      analytical modelling with numerical simulations to study
+      temperature evolution, heat diffusion, and the influence of
+      flow parameters on thermal efficiency. Particular emphasis is
+      placed on the coupling between fluid motion and heat transfer,
+      with applications to engineering systems involving cooling,
+      microfluidics, and thermal management.
+    </p>
+
+    <a href="Thermal_transport.pdf" class="button-link">
+      Open Report
+    </a>
+  </div>
+
+</section>
+
+</div>
+</main>
+
+</body>
+</html>
