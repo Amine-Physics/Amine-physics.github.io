@@ -4,14 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Engineering Projects</title>
-
 <link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
-
 </head>
 <body>
-
 <button 
   onclick="document.querySelector('.sidebar').classList.toggle('open')"
   style="display:none;position:fixed;top:1rem;left:1rem;z-index:200;
@@ -19,18 +16,15 @@
          padding:0.5rem 0.75rem;font-family:monospace;font-size:0.7rem;
          cursor:pointer;border-radius:3px;"
   id="menuBtn">☰ Menu</button>
-
 <script>
   if (window.innerWidth <= 900)
     document.getElementById('menuBtn').style.display = 'block';
 </script>
-
 <aside class="sidebar">
   <div class="sidebar-header">
     <div class="sidebar-name">Mohamed Amine Ezzine</div>
     <div class="sidebar-subtitle">Physics & Mathematical Engineering</div>
   </div>
-
   <ul class="sidebar-nav">
     <li><a href="index.html" class="nav-link">Home</a></li>
     <li><a href="math.html" class="nav-link">Mathematics Notes</a></li>
@@ -41,9 +35,7 @@
     <li><a href="cv.html" class="nav-link">CV</a></li>
   </ul>
 </aside>
-
 <main class="main">
-
 <header class="page-header">
   <h1>Engineering Projects</h1>
   <p>
@@ -51,17 +43,78 @@
     simulation, and applied physics.
   </p>
 </header>
-
 <div class="content">
+
+<section class="section" id="battery-cycle-life">
+  <h2 class="section-title">Energy Storage & Statistical Modelling</h2>
+  <div class="section-rule"></div>
+  <div class="note-card">
+    <div class="note-title">Bayesian Hierarchical Forecasting of Battery Cycle Life</div>
+    <div class="note-meta">Bayesian Statistics · Optimization · Energy Storage · 2026</div>
+    <p>
+      This capstone project develops a probabilistic framework for forecasting 
+      lithium-ion battery cycle life under different charging policies. Using 
+      Bayesian hierarchical negative binomial regression on the Severson et al. 
+      LFP/graphite dataset (124 cells across 3 batches), the analysis quantifies 
+      uncertainty in battery degradation and enables risk-aware policy selection 
+      for grid-scale energy storage systems.
+    </p>
+    <p style="margin-top: 0.8rem;">
+      <strong>Key contributions:</strong>
+    </p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+      <li>Hierarchical model accounting for batch heterogeneity and manufacturing variability</li>
+      <li>MCMC convergence diagnostics (Gelman-Rubin, effective sample size, trace plots)</li>
+      <li>Probabilistic predictions: conservative policy achieves 70% probability of ≥1000 cycles 
+          vs. 40% for aggressive policy</li>
+      <li>Interactive Power BI dashboard for policy comparison and stakeholder communication</li>
+      <li>Model validation on held-out test data with residual analysis</li>
+    </ul>
+    <p style="margin-top: 0.8rem;">
+      <strong>Technical approach:</strong> JAGS-based MCMC sampling with 300,000 iterations, 
+      three-chain ensemble, hierarchical priors on batch intercepts and coefficients, 
+      interaction term between charging and discharging rates, prior sensitivity analysis.
+    </p>
+    <div style="display: flex; gap: 0.8rem; margin-top: 1.2rem; flex-wrap: wrap;">
+      <a href="Bayesian_Statistics_project.pdf" class="button-link">
+        Open Report (PDF)
+      </a>
+      <a href="https://github.com/Amine-Physics/Bayesian-analysis-of-battery-life-cycle" 
+         class="button-link" target="_blank">
+        GitHub Repository
+      </a>
+      <a href="#dashboard-note" class="button-link">
+        Dashboard Details
+      </a>
+    </div>
+  </div>
+
+  <div class="note-card" id="dashboard-note" style="margin-top: 1.5rem; background: rgba(212, 168, 67, 0.05); border-left: 3px solid #d4a843;">
+    <div class="note-title" style="font-size: 0.95rem; color: #d4a843;">Interactive Dashboard</div>
+    <p style="font-size: 0.95rem; margin-top: 0.5rem;">
+      Power BI dashboard visualizing model predictions across three charging policies 
+      (Conservative, Balanced, Aggressive). Features include:
+    </p>
+    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; font-size: 0.95rem;">
+      <li>Probability curves: target cycle life vs. probability of achievement</li>
+      <li>Policy comparison KPI cards with 1000-cycle thresholds</li>
+      <li>Posterior density plots for coefficient estimates</li>
+      <li>Model diagnostics: convergence metrics and residual analysis</li>
+      <li>Batch effect visualization showing manufacturing variability</li>
+      <li>Interactive slicing by target cycle threshold</li>
+    </ul>
+    <p style="font-size: 0.9rem; margin-top: 0.8rem; color: #888;">
+      Dashboard code and configuration available in GitHub repository
+    </p>
+  </div>
+</section>
 
 <section class="section" id="thermal-transport">
   <h2 class="section-title">Fluid Dynamics & Heat Transfer</h2>
   <div class="section-rule"></div>
-
   <div class="note-card">
     <div class="note-title">Thermal Transport in Cylindrical Channels</div>
     <div class="note-meta">Heat Transfer · Fluid Dynamics · 2026</div>
-
     <p>
       This project investigates thermal transport in cylindrical
       channels under laminar flow conditions. The work combines
@@ -72,16 +125,13 @@
       with applications to engineering systems involving cooling,
       microfluidics, and thermal management.
     </p>
-
     <a href="Thermal Transport Project.pdf" class="button-link">
       Open Report
     </a>
   </div>
-
 </section>
 
 </div>
 </main>
-
 </body>
 </html>
