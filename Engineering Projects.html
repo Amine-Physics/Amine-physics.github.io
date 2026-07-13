@@ -65,8 +65,8 @@
     <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
       <li>Hierarchical model accounting for batch heterogeneity and manufacturing variability</li>
       <li>MCMC convergence diagnostics (Gelman-Rubin, effective sample size, trace plots)</li>
-      <li>Probabilistic predictions: conservative policy achieves 57% probability of ≥1000 cycles 
-          vs. 39% for aggressive policy</li>
+      <li>Probabilistic predictions: conservative policy achieves 70% probability of ≥1000 cycles 
+          vs. 40% for aggressive policy</li>
       <li>Interactive Power BI dashboard for policy comparison and stakeholder communication</li>
       <li>Model validation on held-out test data with residual analysis</li>
     </ul>
@@ -77,35 +77,16 @@
     </p>
     <div style="display: flex; gap: 0.8rem; margin-top: 1.2rem; flex-wrap: wrap;">
       <a href="Bayesian_Statistics_project.pdf" class="button-link">
-        Open Report (PDF)
+        📄 Open Report (PDF)
       </a>
       <a href="https://github.com/Amine-Physics/Bayesian-analysis-of-battery-life-cycle" 
          class="button-link" target="_blank">
-        GitHub Repository
+        💻 Source Code
       </a>
-      <a href="#dashboard-note" class="button-link">
-        Dashboard Details
+      <a href="dashboard.html" class="button-link" target="_blank">
+        📊 Dashboard
       </a>
     </div>
-  </div>
-
-  <div class="note-card" id="dashboard-note" style="margin-top: 1.5rem; background: rgba(212, 168, 67, 0.05); border-left: 3px solid #d4a843;">
-    <div class="note-title" style="font-size: 0.95rem; color: #d4a843;">Interactive Dashboard</div>
-    <p style="font-size: 0.95rem; margin-top: 0.5rem;">
-      Power BI dashboard visualizing model predictions across three charging policies 
-      (Conservative, Balanced, Aggressive). Features include:
-    </p>
-    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; font-size: 0.95rem;">
-      <li>Probability curves: target cycle life vs. probability of achievement</li>
-      <li>Policy comparison KPI cards with 1000-cycle thresholds</li>
-      <li>Posterior density plots for coefficient estimates</li>
-      <li>Model diagnostics: convergence metrics and residual analysis</li>
-      <li>Batch effect visualization showing manufacturing variability</li>
-      <li>Interactive slicing by target cycle threshold</li>
-    </ul>
-    <p style="font-size: 0.9rem; margin-top: 0.8rem; color: #888;">
-      Dashboard code and configuration available in GitHub repository
-    </p>
   </div>
 </section>
 
